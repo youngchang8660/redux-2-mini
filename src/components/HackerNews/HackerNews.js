@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
 import Card from './../shared/Card/Card';
 import Loading from './../shared/Loading/Loading';
-import { connect } from 'react-redux';
-import { getHackerArticles } from './../../ducks/hackerNewsReducer';
 
 class HackerNews extends Component {
-  componentDidMount() {
-    this.props.getHackerArticles();
+  constructor(props) {
+    super(props);
+    this.state = { articles: [], loading: true }
   }
+
   render() {
-    const articles = this.props.articles.map((article => <Card key={article.id} article={article} />))
+    const articles = this.state.articles.map((article => <Card key={article.id} article={article} />))
     return (
       <div className='news-container'>
         <img style={styles.logo} src="./hackerNews.jpeg" alt="" />
-        {this.props.loading ? <Loading /> : <div>{articles}</div>}
+        {this.state.loading ? <Loading /> : <div>{articles}</div>}
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    loading: state.hackerNewsReducer.loading,
-    articles: state.hackerNewsReducer.articles
-  }
-}
-
-export default connect(mapStateToProps, { getHackerArticles })(HackerNews);
+export default HackerNews;
 
 
 const styles = {
