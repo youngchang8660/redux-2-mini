@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lusitana|Raleway:800');
 
 .App {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
   display: flex;
   background: #FEFEFE;
 }
