@@ -4,6 +4,10 @@
   background-color: #F1F1F1;
 }
 
+.sidebar-container > h3 {
+  font-family: 'Raleway', sans-serif;
+}
+
 .sidebar-img {
   width: 75px;
   margin-top: 25px;
