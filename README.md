@@ -216,7 +216,7 @@ Time to update the reducer function. Add in a switch statement and 3 cases for e
 
 ### Summary
 
-In this step, we will use the action creator function in the HackerNews.js file adn display the articles.
+In this step, we will use the action creator function in the HackerNews.js file and display the articles.
 
 ### Instructions
 
@@ -310,7 +310,7 @@ When you complete this, you should see the loading animation, and then the artic
 
 ### Summary
 
-In this step, we'll learn how to use multiple reducers. As your application grows, you'll find that it is easier to have multiple reducer functions instead of single, monolithic reducer function.
+In this step, we'll learn how to use multiple reducers. As your application grows, you'll find that it is easier to have multiple reducer functions instead of a single, monolithic reducer function.
 
 ### Instructions
 
@@ -394,10 +394,10 @@ In this step, you'll set up the rest of the mediumReducer file so that you can d
 
 In mediumReducer.js:
 * import `axios`
-* create an action type called 
+* create an action type called `REQUEST_ARTICLES`
 * create an action creator that will fetch the medium articles from the server
   * Method: `GET`
-  * URL: '/api/medium'
+  * URL: `/api/medium`
 * Using what you know about `redux-promise-middleware`, set up the reducer function the handle the two different states of our http request: `pending` and `fulfilled`.
   * Remember that the `loading` property should be set to `true` when the http request is still pending.
 
@@ -425,7 +425,7 @@ In Medium.js:
 
   const REQUEST_ARTICLES = 'REQUEST_ARTICLES';
 
-  export const requestArtiles = () => {
+  export const requestArticles = () => {
     let articles = axios.get('/api/medium').then(res => res.data);
     return {
       type: REQUEST_ARTICLES,
@@ -493,7 +493,7 @@ In Medium.js:
 
 ### Summary
 
-If you want additional practice, step 8 will go through the process of hookinh up the Reddit section of the app. You will not get much instruction here as this is the 3rd section of the app that needs to be set up the same way as the other two (Hacker News and Medium).
+If you want additional practice, step 8 will go through the process of hooking up the Reddit section of the app. You will not get much instruction here as this is the 3rd section of the app that needs to be set up the same way as the other two (Hacker News and Medium).
 
 ### Instructions
 
@@ -502,7 +502,7 @@ Create a new file in the `ducks` folder called redditReducer.js
   * Initial state -> `{loading: false, articles: []}`
 * In your action creator, you will make an http request using axios to get the reddit articles
   * Method: `GET`
-  * URL: '/api/reddit'
+  * URL: `/api/reddit`
 * Add the reddit reducer to the `rootReducer` in store.js.
 
 In Reddit.js:
