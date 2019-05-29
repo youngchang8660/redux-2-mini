@@ -275,42 +275,46 @@ When you complete this, you should see the loading animation, and then the artic
   <summary> <code> HackerNews.js </code> </summary>
 
   ```
-  import React, { Component } from 'react';
-  import Card from './../shared/Card/Card';
-  import Loading from './../shared/Loading/Loading';
-  import { requestArticles } from './../../ducks/hackerNewsReducer';
-  import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import Card from './../shared/Card/Card'
+import Loading from './../shared/Loading/Loading'
+import { requestArticles } from '../../redux/hackerNewsReducer'
+import { connect } from 'react-redux'
 
-  class HackerNews extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {}
-    }
+class HackerNews extends Component {
+	componentDidMount() {
+		this.props.requestArticles()
+	}
 
-    render() {
-      const articles = this.props.articles.map((article => <Card key={article.id} article={article} />))
-      return (
-        <div className='news-container'>
-          <img style={styles.logo} src="./hackerNews.jpeg" alt="" />
-          {this.props.loading ? <Loading /> : <div>{articles}</div>}
-        </div>
-      )
-    }
-  }
+	render() {
+		const articles = this.props.articles.map((article) => (
+			<Card key={article.id} article={article} />
+		))
+		return (
+			<div className='news-container'>
+				<img style={styles.logo} src='./hackerNews.jpeg' alt='' />
+				{this.props.loading ? <Loading /> : <div>{articles}</div>}
+			</div>
+		)
+	}
+}
 
-  function mapStateToProps(state) {
-    return state;
-  }
+function mapStateToProps(reduxState) {
+	return reduxState
+}
 
-  export default connect(mapStateToProps, { requestArticles })(HackerNews);
+export default connect(
+	mapStateToProps,
+	{ requestArticles }
+)(HackerNews)
 
+const styles = {
+	logo: {
+		width: '250px',
+		margin: '50px 0px'
+	}
+}
 
-  const styles = {
-    logo: {
-      width: '250px',
-      margin: '50px 0px'
-    }
-  }
   ```
   </details>
 
